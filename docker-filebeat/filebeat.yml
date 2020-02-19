@@ -7,4 +7,6 @@ filebeat.inputs:
     processors:
       - add_docker_metadata: ~
 output.elasticsearch:
-  hosts: ["localhost:9200"]
+  hosts: ["18.191.150.124:9200"]
+  username: "elastic"
+  password: "harmony"

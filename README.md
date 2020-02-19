@@ -64,8 +64,13 @@ output.elasticsearch:
   hosts: ["localhost:9200"]  ==>  hosts:["production_ip:9200"]
 
 ```console
-cd ../docker-filebeat/
+#note this is another node running harmony, which is different from the ELK server 
+git clone https://github.com/harmony-one/node-log-monitoring.git
+cd node-log-monitoring/docker-filebeat
+
+#generate docker image, only need run once for each EC2 instance 
 docker image build -t filebeat:latest .
+#start filebeat docker instance 
 docker run -v "`pwd`/zerolog:/var/lib/zerolog:ro" -v '/var/run/docker.sock:/var/run/docker.sock' filebeat:latest
 ```
 
